@@ -1,5 +1,5 @@
 package org.automation;
-
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,21 +7,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
 
         WebDriver driver = new ChromeDriver();
-        TestCase1(driver);
+
+        TestCase1_Navigate(driver);
         //TestCase2(driver);
         //TestCase3(driver);
         //TestCase4(driver);
         //TestCase5(driver);
         driver.quit();
 
-
     }
 
-    static void TestCase1(WebDriver driver) {
-        driver.get("https://www.Google.com");
+    static void TestCase1_Navigate(WebDriver driver) {
+        driver.navigate().to("https://www.amazon.com");
+        driver.navigate().to("https://www.Google.com");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.navigate().back();
+        driver.navigate().refresh();
         String currentTitle = driver.getTitle();
         System.out.println(currentTitle);
 
