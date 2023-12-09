@@ -1,5 +1,6 @@
 package org.automation;
 import java.util.concurrent.TimeUnit;
+import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,8 +12,8 @@ public class Main {
 
         WebDriver driver = new ChromeDriver();
 
-        TestCase1_Navigate(driver);
-        //TestCase2(driver);
+        //TestCase1_Navigate(driver);
+        //Windowhandling(driver);
         //TestCase3(driver);
         //TestCase4(driver);
         //TestCase5(driver);
@@ -23,7 +24,6 @@ public class Main {
     static void TestCase1_Navigate(WebDriver driver) {
         driver.navigate().to("https://www.amazon.com");
         driver.navigate().to("https://www.Google.com");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.navigate().back();
         driver.navigate().refresh();
         String currentTitle = driver.getTitle();
@@ -31,10 +31,17 @@ public class Main {
 
     }
 
-    static void TestCase2(WebDriver driver) {
-        driver.get("https://www.namecheap.com");
-        String getFullPageSource = driver.getPageSource();
-        //System.out.println(getFullPageSource);
+    static void Windowhandling(WebDriver driver) {
+        driver.get("https://www.w3schools.com/tags/tag_a.asp");
+        String getwindowhandle1 = driver.getWindowHandle();
+        System.out.println(getwindowhandle1);
+        driver.findElement(By.cssSelector("div.w3-main.w3-light-grey:nth-child(10) div.w3-row.w3-white:nth-child(1) div.w3-col.l10.m12:nth-child(1) div.w3-example:nth-child(5) > a.w3-btn.w3-margin-bottom:nth-child(4)")).click();
+        Set<String> s1 =driver.getWindowHandles();
+        for(String s: s1)
+        {
+            System.out.println(s);
+            driver.switchTo().window(getwindowhandle1);
+        }
 
     }
 
