@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 public class Main {
     public static void main(String[] args)  {
 
@@ -14,10 +15,10 @@ public class Main {
 
         //TestCase1_Navigate(driver);
         //Windowhandling(driver);
-        radio_checkbox(driver);
-        //TestCase4(driver);
+        //radio_checkbox(driver);
+        select_class(driver);
         //TestCase5(driver);
-        driver.quit();
+        //driver.quit();
 
     }
 
@@ -61,11 +62,17 @@ public class Main {
 
     }
 
-    static void TestCase4(WebDriver driver) {
-        driver.get("https://www.namecheap.com");
+    static void select_class(WebDriver driver) {
+        driver.get("https://www.Amazon.com");
         driver.manage().window().maximize();
-        driver.findElement(By.id("domain-search-input")).sendKeys("sdet.to");
-        driver.findElement(By.id("search-domain-btn")).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebElement element= driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
+        Select select= new Select(element);
+        select.selectByVisibleText("Baby");
+
+
+
+
 
     }
 
