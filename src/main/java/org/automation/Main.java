@@ -14,7 +14,7 @@ public class Main {
 
         //TestCase1_Navigate(driver);
         //Windowhandling(driver);
-        //TestCase3(driver);
+        disp_enabled_selected(driver);
         //TestCase4(driver);
         //TestCase5(driver);
         driver.quit();
@@ -45,18 +45,14 @@ public class Main {
 
     }
 
-    static void TestCase3(WebDriver driver) {
-        driver.get("https://www.namecheap.com");
-        String getFullPageSource = driver.getPageSource();
-        if(driver.getPageSource().contains("Search for your domain name"))
-        {
-            System.out.println("Yes");
-        }
-        else
-        {
-            System.out.println("No");
-
-        }
+    static void disp_enabled_selected(WebDriver driver) {
+        driver.get("https://selenium08.blogspot.com/2019/07/check-box-and-radio-buttons.html");
+        Boolean displayed= driver.findElement(By.xpath("//h3[contains(text(),'Check box and Radio buttons')]")).isDisplayed();
+        Boolean enabled = driver.findElement(By.xpath("//h3[contains(text(),'Check box and Radio buttons')]")).isEnabled();
+        Boolean selected= driver.findElement(By.xpath("//body/div[1]/div[2]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/input[1]")).isSelected();
+        System.out.println("displayed= "+displayed);
+        System.out.println("enabled= "+enabled);
+        System.out.println("selected= "+selected);
 
 
     }
