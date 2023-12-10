@@ -14,7 +14,7 @@ public class Main {
 
         //TestCase1_Navigate(driver);
         //Windowhandling(driver);
-        disp_enabled_selected(driver);
+        radio_checkbox(driver);
         //TestCase4(driver);
         //TestCase5(driver);
         driver.quit();
@@ -45,14 +45,18 @@ public class Main {
 
     }
 
-    static void disp_enabled_selected(WebDriver driver) {
+    static void radio_checkbox(WebDriver driver) {
         driver.get("https://selenium08.blogspot.com/2019/07/check-box-and-radio-buttons.html");
         Boolean displayed= driver.findElement(By.xpath("//h3[contains(text(),'Check box and Radio buttons')]")).isDisplayed();
-        Boolean enabled = driver.findElement(By.xpath("//h3[contains(text(),'Check box and Radio buttons')]")).isEnabled();
-        Boolean selected= driver.findElement(By.xpath("//body/div[1]/div[2]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/input[1]")).isSelected();
         System.out.println("displayed= "+displayed);
+        Boolean enabled = driver.findElement(By.xpath("//h3[contains(text(),'Check box and Radio buttons')]")).isEnabled();
         System.out.println("enabled= "+enabled);
-        System.out.println("selected= "+selected);
+        Boolean selected= driver.findElement(By.xpath("//body/div[1]/div[2]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/input[2]")).isSelected();
+        System.out.println("selected= "+selected +" ,performing select on radio");
+        driver.findElement(By.xpath("//body/div[1]/div[2]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/input[2]")).click();
+        boolean selected2=driver.findElement(By.xpath("//body/div[1]/div[2]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/article[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/input[2]")).isSelected();
+        System.out.println("selected= "+selected2);
+        //you  can use same method for checkbox as well
 
 
     }
