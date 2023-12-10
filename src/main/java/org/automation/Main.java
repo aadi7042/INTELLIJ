@@ -1,5 +1,4 @@
 package org.automation;
-import java.util.concurrent.TimeUnit;
 import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,17 +7,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
+import java.time.Duration;
 public class Main {
     public static void main(String[] args)  {
 
         WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         //TestCase1_Navigate(driver);
         //Windowhandling(driver);
         //radio_checkbox(driver);
         select_class(driver);
         //TestCase5(driver);
-        //driver.quit();
+        driver.quit();
 
     }
 
@@ -65,10 +66,10 @@ public class Main {
     static void select_class(WebDriver driver) {
         driver.get("https://www.Amazon.com");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement element= driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
         Select select= new Select(element);
         select.selectByVisibleText("Baby");
+        select.selectByVisibleText("Books");
 
 
 
