@@ -8,25 +8,28 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 public class Main {
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        //TestCase1_Navigate(driver);
+        TestCase1_Navigate(driver);
         //Windowhandling(driver);
         //radio_checkbox(driver);
-        select_class(driver);
+        //select_class(driver);
         //TestCase5(driver);
         driver.quit();
 
     }
 
-    static void TestCase1_Navigate(WebDriver driver) {
+    static void TestCase1_Navigate(WebDriver driver)throws InterruptedException{
         driver.navigate().to("https://www.amazon.com");
         driver.navigate().to("https://www.Google.com");
+        Thread.sleep(2000);
         driver.navigate().back();
+        Thread.sleep(5000);
         driver.navigate().refresh();
         String currentTitle = driver.getTitle();
         System.out.println(currentTitle);
