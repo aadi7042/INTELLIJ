@@ -1,25 +1,27 @@
 package org.automation;
 import java.util.Set;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+import java.lang.*;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        TestCase1_Navigate(driver);
+        //TestCase1_Navigate(driver);
         //Windowhandling(driver);
         //radio_checkbox(driver);
         //select_class(driver);
-        //TestCase5(driver);
+        Actions_Class(driver);
         driver.quit();
 
     }
@@ -80,10 +82,21 @@ public class Main {
 
     }
 
-    static void TestCase5(WebDriver driver) {
-        driver.get("https://www.namecheap.com");
+    static void Actions_Class(WebDriver driver)throws InterruptedException {
+        driver.get("https://www.Youtube.com");
         driver.manage().window().maximize();
-        driver.findElement(By.id("domain-search-input")).sendKeys("sdet.to");
-        driver.findElement(By.id("search-domain-btn")).click();
+        Thread.sleep(1000);
+        Actions actions= new Actions(driver);
+        driver.findElement(By.xpath("//input[@id='search']")).sendKeys("paint the town red");
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector("div.style-scope.ytd-app:nth-child(7) div.style-scope.ytd-app:nth-child(1) ytd-masthead.masthead-finish div.style-scope.ytd-masthead:nth-child(5) div.style-scope.ytd-masthead:nth-child(2) ytd-searchbox.style-scope.ytd-masthead:nth-child(1) button.style-scope.ytd-searchbox:nth-child(2) yt-icon.style-scope.ytd-searchbox:nth-child(1) yt-icon-shape.style-scope.yt-icon icon-shape.yt-spec-icon-shape > div:nth-child(1)")).click();
+        Thread.sleep(1000);
+        WebElement element=driver.findElement(By.xpath("//body/ytd-app[1]/div[1]/ytd-page-manager[1]/ytd-search[1]/div[1]/ytd-two-column-search-results-renderer[1]/div[1]/ytd-section-list-renderer[1]/div[2]/ytd-item-section-renderer[1]/div[3]/ytd-video-renderer[1]/div[1]/div[1]/div[1]/div[1]/h3[1]/a[1]/yt-formatted-string[1]"));
+        actions.keyDown(element,Keys.ENTER).build().perform();
+
+
+
+
+
     }
 }
