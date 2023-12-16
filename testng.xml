@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="all tests suite1">
-    <test  name="test1">
+<suite name="All Test Suite">
+    <test name="annotations_demo">
         <classes>
-                <class name="testing" />
-        </classes>
+            <class name="testing">
+                <methods>
+                    <include name="test2"/>
+                </methods>
+            </class>
+            <class name="testing2">
+                <methods>
+                    <include name="test4"/>
+                </methods>
+            </class>
+             </classes>
+
     </test>
 </suite>
