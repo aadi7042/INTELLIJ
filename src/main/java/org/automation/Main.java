@@ -17,12 +17,13 @@ public class Main {
 
         WebDriver driver = new ChromeDriver();
 
-        TestCase1_Navigate(driver);
-        Windowhandling(driver);
-        radio_checkbox(driver);
-        select_class(driver);
-        Actions_Class(driver);
-        driver.quit();
+        //TestCase1_Navigate(driver);
+        //Windowhandling(driver);
+        //radio_checkbox(driver);
+        //select_class(driver);
+        //Actions_Class(driver);
+        Googlesearch(driver);
+        //driver.quit();
 
     }
 
@@ -92,6 +93,14 @@ public class Main {
         System.out.println(element.getLocation().getY());
         actions.keyDown(element, Keys.ENTER).build().perform();
         Thread.sleep(30000);
+
+
+    }
+    static void Googlesearch(WebDriver driver)throws InterruptedException{
+        driver.navigate().to("https://www.Google.com");
+        driver.findElement(By.className("gLFyf")).sendKeys("hii");
+        Actions action =new Actions(driver);
+        
 
 
     }
