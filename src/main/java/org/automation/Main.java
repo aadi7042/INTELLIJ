@@ -2,10 +2,7 @@ package org.automation;
 
 import java.util.Set;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -18,12 +15,12 @@ public class Main {
         WebDriver driver = new ChromeDriver();
 
         //TestCase1_Navigate(driver);
-        //Windowhandling(driver);
+       Windowhandling(driver);
         //radio_checkbox(driver);
         //select_class(driver);
         //Actions_Class(driver);
-        Googlesearch(driver);
-        //driver.quit();
+        //Googlesearch(driver);
+        driver.quit();
 
     }
 
@@ -40,10 +37,12 @@ public class Main {
     }
 
     static void Windowhandling(WebDriver driver) {
-        driver.get("https://www.w3schools.com/tags/tag_a.asp");
+        driver.get("https://www.wikipedia.org/");
+        driver.manage().window().maximize();
         String getwindowhandle1 = driver.getWindowHandle();
         System.out.println(getwindowhandle1);
-        driver.findElement(By.cssSelector("div.w3-main.w3-light-grey:nth-child(10) div.w3-row.w3-white:nth-child(1) div.w3-col.l10.m12:nth-child(1) div.w3-example:nth-child(5) > a.w3-btn.w3-margin-bottom:nth-child(4)")).click();
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://www.google.com/");
         Set<String> s1 = driver.getWindowHandles();
         for (String s : s1) {
             System.out.println(s);

@@ -24,7 +24,7 @@ public class testing {
         System.out.println("this is before class : SETTING UP WEBDRIVER");
         //ChromeOptions options = new ChromeOptions();
         //options.addArguments("--headless=new");
-        //USE THE ABOVE TWO LINES FOR EXECUTION OF CASES WITHOUT GUI
+        //USE THE ABOVE TWO LINES FOR EXECUTION OF CASES WITHOUT GUI- No need to watch the gui (acha h)
         driver = new ChromeDriver();
     }
 
